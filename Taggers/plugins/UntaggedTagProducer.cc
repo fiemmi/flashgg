@@ -84,7 +84,9 @@ namespace flashgg {
 
             tag_obj.setSystLabel( systLabel_ );
 
-            int catnum = chooseCategory( mvares->result );
+            //int catnum = chooseCategory( mvares->result );
+            int catnum = chooseCategory( mvares->transformedMvaValue() );
+            
             tag_obj.setCategoryNumber( catnum );
 
             tag_obj.includeWeights( *dipho );
