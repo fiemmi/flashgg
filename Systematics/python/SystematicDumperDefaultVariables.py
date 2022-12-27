@@ -16,7 +16,21 @@ minimalVariables = ["CMS_hgg_mass[160,100,180]:=diPhoton().mass",
                     "sigmawv := diPhotonMVA.sigmawv",
                     "maxEta :=max(abs(diPhoton().leadingPhoton.superCluster.eta),abs(diPhoton().leadingPhoton.superCluster.eta))",
                     "genZ :=tagTruth().genPV().z",
-                    "vtxZ :=diPhoton().vtx().z"]
+                    "vtxZ :=diPhoton().vtx().z",
+                    ####MC corrected iso variables
+                    "lead_PhoIso03  :=diPhoton().leadingPhoton.pfPhoIso03",
+                    "sublead_PhoIso03 :=diPhoton().subLeadingPhoton.pfPhoIso03",
+                    "lead_ChIso03  :=diPhoton().leadingPhoton.pfChgIsoWrtChosenVtx03",
+                    "sublead_ChIso03 :=diPhoton().subLeadingPhoton.pfChgIsoWrtChosenVtx03",
+                    "lead_ChIso03worst  :=diPhoton().leadingPhoton.pfChgIsoWrtWorstVtx03",
+                    "sublead_ChIso03worst :=diPhoton().subLeadingPhoton.pfChgIsoWrtWorstVtx03",
+                    ####MC uncorrected iso variables
+                    "lead_PhoIso03_Unc  := ? diPhoton().leadingPhoton.hasUserFloat('uncorr_pfPhoIso03') ? diPhoton().leadingPhoton.userFloat('uncorr_pfPhoIso03') : -999",
+                    "sublead_PhoIso03_Unc := ? diPhoton().subLeadingPhoton.hasUserFloat('uncorr_pfPhoIso03') ? diPhoton().subLeadingPhoton.userFloat('uncorr_pfPhoIso03') : -999",
+                    "lead_ChIso03_Unc  := ? diPhoton().leadingPhoton.hasUserFloat('uncorr_pfChIso03') ? diPhoton().leadingPhoton.userFloat('uncorr_pfChIso03') : -999",
+                    "sublead_ChIso03_Unc := ? diPhoton().subLeadingPhoton.hasUserFloat('uncorr_pfChIso03') ? diPhoton().subLeadingPhoton.userFloat('uncorr_pfChIso03') : -999",
+                    "lead_ChIso03worst_Unc  := ? diPhoton().leadingPhoton.hasUserFloat('uncorr_pfChIsoWorst03') ? diPhoton().leadingPhoton.userFloat('uncorr_pfChIsoWorst03') : -999",
+                    "sublead_ChIso03worst_Unc := ? diPhoton().subLeadingPhoton.hasUserFloat('uncorr_pfChIsoWorst03') ? diPhoton().subLeadingPhoton.userFloat('uncorr_pfChIsoWorst03') : -999"]
 
 minimalHistograms = []
 
