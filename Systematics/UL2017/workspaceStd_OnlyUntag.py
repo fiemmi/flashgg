@@ -323,7 +323,9 @@ if customize.UntagsOnly:  ##JTao
     )
 #    process.flashggUntagged.Boundaries = cms.vdouble(0.030, 0.794, 0.909, 0.953) #based on the optimized boudaries from all MC bkg
 #    process.flashggUntagged.Boundaries = cms.vdouble(0.206, 0.796, 0.907, 0.953)
-    process.flashggUntagged.Boundaries = cms.vdouble(0.263, 0.799, 0.916, 0.952) #new 2021.10.11
+#    process.flashggUntagged.Boundaries = cms.vdouble(0.263, 0.799, 0.916, 0.952) #new 2021.10.11
+#    process.flashggUntagged.Boundaries = cms.vdouble(0.436, 0.736, 0.825, 0.932) #Neil's boundaries (transformed BDT scores)
+    process.flashggUntagged.Boundaries = cms.vdouble(0.4980, 0.8136, 0.9804, 0.9967) #Neil's boundaries (retrained, transformed BDT scores)
 
 print "JTao : boundaries of diphoton BDT ",process.flashggUntagged.Boundaries
 
