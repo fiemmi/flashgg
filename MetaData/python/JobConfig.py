@@ -209,7 +209,7 @@ class JobConfig(object):
 
         #self.pu_distribs_hack_2017 = {  }
 
-
+        
         # try:
         #     import importlib
         #     from os import listdir,environ
@@ -422,11 +422,11 @@ class JobConfig(object):
         # get the runs and lumis contained in each file of the secondary dataset
         if self.options.secondaryDataset:
             secondary_files = [fdata['file'][0]['name'] for fdata in safe_das_query("file dataset=%s instance=prod/phys03" % self.options.secondaryDataset, 
-                                                                               cmd='dasgoclient ')['data']]
+                                                                               cmd='dasgoclient --dasmaps=./')['data']]
             runs_and_lumis = {}
             for s in secondary_files:
                 runs_and_lumis[str(s)] = {data['lumi'][0]['run_number'] : data['lumi'][0]['lumi_section_num']
-                                          for data in safe_das_query("lumi file=%s instance=prod/phys03" % s, cmd='dasgoclient ')['data']}
+                                          for data in safe_das_query("lumi file=%s instance=prod/phys03" % s, cmd='dasgoclient --dasmaps=./')['data']}
 
         for f in files:
             if len(f.split(":",1))>1:
@@ -435,14 +435,15 @@ class JobConfig(object):
                 flist.append(str("%s%s" % (self.filePrepend,f)))
             # keep useParent and secondaryDataset as exclusive options for the moment
             if self.options.useParentDataset:
-                parent_files = safe_das_query("parent file=%s instance=prod/phys03" % f, cmd='dasgoclient ')['data']
+                parent_files = safe_das_query("parent file=%s instance=prod/phys03" % f, cmd='dasgoclient --dasmaps=./')['data']
+		#parent_files = safe_das_query("parent file=%s instance=prod/phys03" % f, cmd='/afs/cern.ch/user/j/jtao/dasgoclient-02.04.43/dasgoclient_amd64 --dasmaps=./')['data']
                 for parent_f in parent_files:
                     parent_f_name = str(parent_f['parent'][0]['name'])
                     sflist.append('root://cms-xrd-global.cern.ch/'+parent_f_name if 'root://' not in parent_f_name else parent_f_name)
             elif self.options.secondaryDataset != "":
                 # match primary file to the corresponding secondary file(s)
                 f_runs_and_lumis = {data['lumi'][0]['run_number'] : data['lumi'][0]['lumi_section_num']
-                                    for data in safe_das_query("lumi file=%s instance=prod/phys03" % f, cmd='dasgoclient ')['data']}
+                                    for data in safe_das_query("lumi file=%s instance=prod/phys03" % f, cmd='dasgoclient --dasmaps=./')['data']}
                 for s_name, s_runs_and_lumis in runs_and_lumis.items():
                     matched_runs = set(f_runs_and_lumis.keys()).intersection(s_runs_and_lumis.keys())
                     for run in matched_runs:
@@ -512,7 +513,8 @@ class JobConfig(object):
         
         if self.useAAA:
        #     self.filePrepend = "root://xrootd-cms.infn.it/"
-            self.filePrepend = "root://cms-xrd-global.cern.ch/"
+       #JTao     self.filePrepend = "root://cms-xrd-global.cern.ch/"
+            self.filePrepend = "root://xrootd-cms-redir-int.cr.cnaf.infn.it:1094/"
         elif self.useEOS:
             self.filePrepend = "root://eoscms.cern.ch//eos/cms"
         self.samplesMan = None
@@ -524,6 +526,7 @@ class JobConfig(object):
                                          )
             if self.dryRun and self.getMaxJobs:
                 dataset = self.samplesMan.getDatasetMetaData(self.options.maxEvents,self.dataset,jobId=-1,nJobs=self.nJobs,weightName=self.WeightName)
+                print("dataset:", dataset)
             else:
                 dataset = self.samplesMan.getDatasetMetaData(self.options.maxEvents,self.dataset,jobId=self.jobId,nJobs=self.nJobs,weightName=self.WeightName)
             if not dataset: 
