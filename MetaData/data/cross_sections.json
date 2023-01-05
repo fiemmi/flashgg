@@ -205,6 +205,7 @@
 
     "ttHJetToGG_M120_13TeV_amcatnloFXFX_madspin_pythia8"                          : { "xs" : 0.5697,   "br" : 0.002218, "kf" : 1.06, "itype":-120300 },
     "ttHJetToGG_M120_13TeV_amcatnloFXFX_madspin_pythia8_v2"                          : { "xs" : 0.5697,   "br" : 0.002218, "kf" : 1.06, "itype":-120300 },
+    "ttHJetToGG_M120_TuneCP5_13TeV-amcatnloFXFX-madspin-pythia8"                          : { "xs" : 0.5697,   "br" : 0.002218, "kf" : 1.06, "itype":-120300 },
     "ttHJetToGG_M121_13TeV_amcatnloFXFX_madspin_pythia8"                          : { "xs" : 0.5568,   "br" : 0.002235, "kf" : 1.06, "itype":-121300 },
     "ttHJetToGG_M121_13TeV_amcatnloFXFX_madspin_pythia8_v2"                          : { "xs" : 0.5568,   "br" : 0.002235, "kf" : 1.06, "itype":-121300 },
     "ttHJetToGG_M122_13TeV_amcatnloFXFX_madspin_pythia8"                          : { "xs" : 0.5438,   "br" : 0.002248, "kf" : 1.06, "itype":-122300 },
@@ -237,8 +238,10 @@
     "ttHJetToGG_M129_13TeV_amcatnloFXFX_madspin_pythia8_v2"                          : { "xs" : 0.4639,   "br" : 0.002251, "kf" : 1.06, "itype":-129300 },
     "ttHJetToGG_M130_13TeV_amcatnloFXFX_madspin_pythia8"                          : { "xs" : 0.4539,   "br" : 0.002238, "kf" : 1.06, "itype":-130300 },
     "ttHJetToGG_M130_13TeV_amcatnloFXFX_madspin_pythia8_v2"                          : { "xs" : 0.4539,   "br" : 0.002238, "kf" : 1.06, "itype":-130300 },
+    "ttHJetToGG_M130_TuneCP5_13TeV-amcatnloFXFX-madspin-pythia8"                          : { "xs" : 0.4539,   "br" : 0.002238, "kf" : 1.06, "itype":-130300 },
 
     "VHToGG_M120_13TeV_amcatnloFXFX_madspin_pythia8"                          : { "xs" : 2.559,   "br" : 0.00222, "kf" : 1.06, "itype":-120400 },
+    "VHToGG_M120_TuneCP5_13TeV-amcatnloFXFX-madspin-pythia8"                          : { "xs" : 2.559,   "br" : 0.00222, "kf" : 1.06, "itype":-120400 },
     "VHToGG_M121_13TeV_amcatnloFXFX_madspin_pythia8"                          : { "xs" : 2.495,   "br" : 0.00223, "kf" : 1.06, "itype":-121400 },
     "VHToGG_M122_13TeV_amcatnloFXFX_madspin_pythia8"                          : { "xs" : 2.433,   "br" : 0.00225, "kf" : 1.06, "itype":-122400 },
     "VHToGG_M123_13TeV_amcatnloFXFX_madspin_pythia8"                          : { "xs" : 2.373,   "br" : 0.00226, "kf" : 1.06, "itype":-123400 },
@@ -284,8 +287,10 @@
     "VHToGG_M128_13TeV_amcatnloFXFX_madspin_pythia8"                          : { "xs" : 2.0965,   "br" : 0.002261, "kf" : 1.06, "itype":-128400 },
     "VHToGG_M129_13TeV_amcatnloFXFX_madspin_pythia8"                          : { "xs" : 2.0463,   "br" : 0.002251, "kf" : 1.06, "itype":-129400 },
     "VHToGG_M130_13TeV_amcatnloFXFX_madspin_pythia8"                          : { "xs" : 1.9989,   "br" : 0.002238, "kf" : 1.06, "itype":-130400 },
+    "VHToGG_M130_TuneCP5_13TeV-amcatnloFXFX-madspin-pythia8"                          : { "xs" : 1.9989,   "br" : 0.002238, "kf" : 1.06, "itype":-130400 },
 
     "VBFHToGG_M120_13TeV_amcatnlo_pythia8"                          : { "xs" : 3.9350,   "br" : 0.002218, "kf" : 1.06, "itype":-120100 },
+    "VBFHToGG_M120_TuneCP5_13TeV-amcatnlo-pythia8"                          : { "xs" : 3.9350,   "br" : 0.002218, "kf" : 1.06, "itype":-120100 },
     "VBFHToGG_M-120_13TeV_powheg_pythia8"                          : { "xs" : 3.9350,   "br" : 0.002218, "kf" : 1.06, "itype":-120100 },
     "VBFHToGG_M121_13TeV_amcatnlo_pythia8"                          : { "xs" : 3.9040,   "br" : 0.002235, "kf" : 1.06, "itype":-121100 },
     "VBFHToGG_M-121_13TeV_powheg_pythia8"                          : { "xs" : 3.9040,   "br" : 0.002235, "kf" : 1.06, "itype":-121100 },
@@ -334,6 +339,7 @@
     "VBFHToGG_M129_13TeV_amcatnlo_pythia8"                          : { "xs" : 3.6650,   "br" : 0.002251, "kf" : 1.06, "itype":-129100 },
     "VBFHToGG_M-129_13TeV_powheg_pythia8"                          : { "xs" : 3.6650,   "br" : 0.002251, "kf" : 1.06, "itype":-129100 },
     "VBFHToGG_M130_13TeV_amcatnlo_pythia8"                          : { "xs" : 3.6370,   "br" : 0.002238, "kf" : 1.06, "itype":-130100 },
+    "VBFHToGG_M130_TuneCP5_13TeV-amcatnlo-pythia8"                          : { "xs" : 3.6370,   "br" : 0.002238, "kf" : 1.06, "itype":-130100 },
     "VBFHToGG_M-130_13TeV_powheg_pythia8"                          : { "xs" : 3.6370,   "br" : 0.002238, "kf" : 1.06, "itype":-130100 },
     "GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCUETP8M1_13TeV_Pythia8" : { "xs" : 3255.0, "br" : 1.0, "kf" : 1.0, "itype":3 },
     "GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCUETP8M1_13TeV_Pythia8" : { "xs" : 220.0, "br" : 1.0, "kf" : 1.0, "itype":1 },
