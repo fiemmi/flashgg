@@ -30,7 +30,15 @@ minimalVariables = ["CMS_hgg_mass[160,100,180]:=diPhoton().mass",
                     "lead_ChIso03_Unc  := ? diPhoton().leadingPhoton.hasUserFloat('uncorr_pfChIso03') ? diPhoton().leadingPhoton.userFloat('uncorr_pfChIso03') : -999",
                     "sublead_ChIso03_Unc := ? diPhoton().subLeadingPhoton.hasUserFloat('uncorr_pfChIso03') ? diPhoton().subLeadingPhoton.userFloat('uncorr_pfChIso03') : -999",
                     "lead_ChIso03worst_Unc  := ? diPhoton().leadingPhoton.hasUserFloat('uncorr_pfChIsoWorst03') ? diPhoton().leadingPhoton.userFloat('uncorr_pfChIsoWorst03') : -999",
-                    "sublead_ChIso03worst_Unc := ? diPhoton().subLeadingPhoton.hasUserFloat('uncorr_pfChIsoWorst03') ? diPhoton().subLeadingPhoton.userFloat('uncorr_pfChIsoWorst03') : -999"]
+                    "sublead_ChIso03worst_Unc := ? diPhoton().subLeadingPhoton.hasUserFloat('uncorr_pfChIsoWorst03') ? diPhoton().subLeadingPhoton.userFloat('uncorr_pfChIsoWorst03') : -999",
+                    ####Random-seeded variables
+                    "lead_PhoPeak2tail_rnd  := ? diPhoton().leadingPhoton.hasUserFloat('peak2tail_rnd') ? diPhoton().leadingPhoton.userFloat('peak2tail_rnd') : -999",
+                    "sublead_PhoPeak2tail_rnd  := ? diPhoton().subLeadingPhoton.hasUserFloat('peak2tail_rnd') ? diPhoton().subLeadingPhoton.userFloat('peak2tail_rnd') : -999",
+                    "lead_PhoPeak2tail_chIso_rnd  := ? diPhoton().leadingPhoton.hasUserFloat('peak2tail_chIso_rnd') ? diPhoton().leadingPhoton.userFloat('peak2tail_chIso_rnd') : -999",
+                    "sublead_PhoPeak2tail_chIso_rnd  := ? diPhoton().subLeadingPhoton.hasUserFloat('peak2tail_chIso_rnd') ? diPhoton().subLeadingPhoton.userFloat('peak2tail_chIso_rnd') : -999",
+                    "lead_PhoPeak2tail_chIsoWorst_rnd  := ? diPhoton().leadingPhoton.hasUserFloat('peak2tail_chIsoWorst_rnd') ? diPhoton().leadingPhoton.userFloat('peak2tail_chIsoWorst_rnd') : -999",
+                    "sublead_PhoPeak2tail_chIsoWorst_rnd  := ? diPhoton().subLeadingPhoton.hasUserFloat('peak2tail_chIsoWorst_rnd') ? diPhoton().subLeadingPhoton.userFloat('peak2tail_chIsoWorst_rnd') : -999"
+]
 
 minimalHistograms = []
 
