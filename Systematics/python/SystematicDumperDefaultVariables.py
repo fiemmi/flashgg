@@ -55,7 +55,29 @@ minimalNonSignalVariables = ["CMS_hgg_mass[160,100,180]:=diPhoton().mass",
                              "sigmarv := diPhotonMVA.sigmarv",
                              "sigmawv := diPhotonMVA.sigmawv",
                              "maxEta :=max(abs(diPhoton().leadingPhoton.superCluster.eta),abs(diPhoton().leadingPhoton.superCluster.eta))",
-                             "vtxZ :=diPhoton().vtx().z"]#,"centralObjectWeight[1,-999999.,999999.] := centralWeight"]
+                             "vtxZ :=diPhoton().vtx().z",
+                             ####corrected iso variables
+                             "lead_PhoIso03  := diPhoton().leadingPhoton.pfPhoIso03",
+                             "sublead_PhoIso03 :=diPhoton().subLeadingPhoton.pfPhoIso03",
+                             "lead_ChIso03  :=diPhoton().leadingPhoton.pfChgIsoWrtChosenVtx03",
+                             "sublead_ChIso03 :=diPhoton().subLeadingPhoton.pfChgIsoWrtChosenVtx03",
+                             "lead_ChIso03worst  :=diPhoton().leadingPhoton.pfChgIsoWrtWorstVtx03",
+                             "sublead_ChIso03worst :=diPhoton().subLeadingPhoton.pfChgIsoWrtWorstVtx03",
+                             ####uncorrected iso variables
+                             "lead_PhoIso03_Unc  := ? diPhoton().leadingPhoton.hasUserFloat('uncorr_pfPhoIso03') ? diPhoton().leadingPhoton.userFloat('uncorr_pfPhoIso03') : -999",
+                             "sublead_PhoIso03_Unc := ? diPhoton().subLeadingPhoton.hasUserFloat('uncorr_pfPhoIso03') ? diPhoton().subLeadingPhoton.userFloat('uncorr_pfPhoIso03') : -999",
+                             "lead_ChIso03_Unc  := ? diPhoton().leadingPhoton.hasUserFloat('uncorr_pfChIso03') ? diPhoton().leadingPhoton.userFloat('uncorr_pfChIso03') : -999",
+                             "sublead_ChIso03_Unc := ? diPhoton().subLeadingPhoton.hasUserFloat('uncorr_pfChIso03') ? diPhoton().subLeadingPhoton.userFloat('uncorr_pfChIso03') : -999",
+                             "lead_ChIso03worst_Unc  := ? diPhoton().leadingPhoton.hasUserFloat('uncorr_pfChIsoWorst03') ? diPhoton().leadingPhoton.userFloat('uncorr_pfChIsoWorst03') : -999",
+                             "sublead_ChIso03worst_Unc := ? diPhoton().subLeadingPhoton.hasUserFloat('uncorr_pfChIsoWorst03') ? diPhoton().subLeadingPhoton.userFloat('uncorr_pfChIsoWorst03') : -999",
+                             ####Random-seeded variables
+                             "lead_PhoPeak2tail_rnd  := ? diPhoton().leadingPhoton.hasUserFloat('peak2tail_rnd') ? diPhoton().leadingPhoton.userFloat('peak2tail_rnd') : -999",
+                             "sublead_PhoPeak2tail_rnd  := ? diPhoton().subLeadingPhoton.hasUserFloat('peak2tail_rnd') ? diPhoton().subLeadingPhoton.userFloat('peak2tail_rnd') : -999",
+                             "lead_PhoPeak2tail_chIso_rnd  := ? diPhoton().leadingPhoton.hasUserFloat('peak2tail_chIso_rnd') ? diPhoton().leadingPhoton.userFloat('peak2tail_chIso_rnd') : -999",
+                             "sublead_PhoPeak2tail_chIso_rnd  := ? diPhoton().subLeadingPhoton.hasUserFloat('peak2tail_chIso_rnd') ? diPhoton().subLeadingPhoton.userFloat('peak2tail_chIso_rnd') : -999",
+                             "lead_PhoPeak2tail_chIsoWorst_rnd  := ? diPhoton().leadingPhoton.hasUserFloat('peak2tail_chIsoWorst_rnd') ? diPhoton().leadingPhoton.userFloat('peak2tail_chIsoWorst_rnd') : -999",
+                             "sublead_PhoPeak2tail_chIsoWorst_rnd  := ? diPhoton().subLeadingPhoton.hasUserFloat('peak2tail_chIsoWorst_rnd') ? diPhoton().subLeadingPhoton.userFloat('peak2tail_chIsoWorst_rnd') : -999"
+]#,"centralObjectWeight[1,-999999.,999999.] := centralWeight"]
 
 minimalVariablesHTXS = minimalVariables+["stage0bin[72,9.5,81.5] := tagTruth().HTXSstage0bin"]
 
