@@ -103,7 +103,7 @@
 
     "flashggDiPhotonMVA" :
     {
-        "weightFile" : "flashgg/Taggers/data/STXSmodels/DiphotonXGboost_UL2018_DDQCD_ETSS.weights.xml",
+        "weightFile" : "flashgg/Taggers/data/MassWidth/UL18_DDQCD_MassWindow.weights.xml",
         "version" : "xgb"
     },
 

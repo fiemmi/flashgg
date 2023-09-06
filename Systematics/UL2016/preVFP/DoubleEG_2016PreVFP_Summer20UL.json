@@ -8,7 +8,7 @@
             "/DoubleEG/phys_higgs-RunIISummer20UL16preVFP-legacyRunII-v0-Run2016F-HIPM_UL2016_MiniAODv2-v1-07f939c4fdc31b2a43d8c4d4b139eaa6/USER"
         ]
     },
-    "cmdLine"  : "campaign=Era2016_legacyPreVFP_v1_Summer20UL metaConditions=$CMSSW_BASE/src/flashgg/MetaData/data/MetaConditions/Era2016_legacyPreVFP_v1.json useAAA=True lumiMask=/afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification/Collisions16/13TeV//Legacy_2016/Cert_271036-284044_13TeV_Legacy2016_Collisions16_JSON.txt"
+    "cmdLine"  : "campaign=Era2016_legacyPreVFP_v1_Summer20UL_Ram metaConditions=$CMSSW_BASE/src/flashgg/MetaData/data/MetaConditions/Era2016_legacyPreVFP_v1.json useAAA=True lumiMask=/afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification/Collisions16/13TeV//Legacy_2016/Cert_271036-284044_13TeV_Legacy2016_Collisions16_JSON.txt"
 }
 
                                         

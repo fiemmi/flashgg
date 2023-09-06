@@ -322,8 +322,9 @@ if customize.UntagsOnly:  ##JTao
         cms.PSet(TagName = cms.InputTag('flashggUntagged'))
     )
     #process.flashggUntagged.Boundaries = cms.vdouble(0.093595, 0.808642, 0.86178, 0.923697) #buggy retrained BDT boundaries
-    process.flashggUntagged.Boundaries = cms.vdouble(0.687366, 0.861791, 0.929523, 0.972203) #retrained BDT boundaries
-
+    #process.flashggUntagged.Boundaries = cms.vdouble(0.687366, 0.861791, 0.929523, 0.972203) #retrained BDT boundaries
+    #process.flashggUntagged.Boundaries = cms.vdouble(0.7455, 0.8817, 0.9376, 0.9685) #retrained MassWindow BDT boundaries
+    process.flashggUntagged.Boundaries = cms.vdouble(0.7107, 0.8563, 0.9155, 0.9563) #retrained no sigmarv BDT boundaries
 print "JTao : boundaries of diphoton BDT ",process.flashggUntagged.Boundaries
 
 print "customize.processId:",customize.processId
