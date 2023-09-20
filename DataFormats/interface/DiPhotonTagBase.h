@@ -12,6 +12,8 @@ namespace flashgg {
     public:
 
         enum tag_t { kUndefined = 0, kUntagged, kVBF, kTTHHadronic, kTTHLeptonic, kTHQLeptonic, kTTHDiLepton, kVHTight, kVHLoose, kVHHadronic, kVHEt,  kZHLeptonic, kWHLeptonic, kVHLeptonicLoose, kVHMet, kStageOneCombined };
+//JTao
+        enum tag_tao { kNoTag = 0, kBothEBUntagged, kNotEBEBUntagged, kBothEBVBF, kNotEBEBVBF};
 
         enum stage1recoTag { LOGICERROR = -1, NOTAG = 0, 
                              RECO_0J_PTH_0_10_Tag0, RECO_0J_PTH_0_10_Tag1, RECO_0J_PTH_0_10_Tag2, 
@@ -79,6 +81,8 @@ namespace flashgg {
         void setIsGoldMC( bool isGold ) { isGold_ = isGold; }
         bool isGold() const { return isGold_; }
         virtual DiPhotonTagBase::tag_t tagEnum() const { return DiPhotonTagBase::kUndefined; }
+//JTao
+        virtual DiPhotonTagBase::tag_tao mytagEnum() const { return DiPhotonTagBase::kNoTag; }
 
         int getStage1recoTag() const { return stage1recoTag_; }
 

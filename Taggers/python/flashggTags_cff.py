@@ -14,6 +14,22 @@ flashggUntagged = cms.EDProducer("FlashggUntaggedTagProducer",
                                  Boundaries     = cms.vdouble(-0.405,0.204,0.564,0.864), #,1.000),
                                  RequireScaledPtCuts = cms.bool(True)
 )
+##JTao
+flashggBothEBUntagged= cms.EDProducer("FlashggBothEBUntaggedTagProducer",
+                                 DiPhotonTag    = cms.InputTag('flashggPreselectedDiPhotons'),
+                                 SystLabel      = cms.string(""),
+                                 MVAResultTag   = cms.InputTag('flashggDiPhotonMVA'),
+                                 Boundaries     = cms.vdouble(0.396, 0.832, 0.925, 0.957), #,1.000),
+                                 RequireScaledPtCuts = cms.bool(True)
+)
+flashggNotEBEBUntagged= cms.EDProducer("FlashggNotEBEBUntaggedTagProducer",
+                                 DiPhotonTag    = cms.InputTag('flashggPreselectedDiPhotons'),
+                                 SystLabel      = cms.string(""),
+                                 MVAResultTag   = cms.InputTag('flashggDiPhotonMVA'),
+                                 Boundaries     = cms.vdouble(0.261, 0.813, 0.925), #,1.000),
+                                 RequireScaledPtCuts = cms.bool(True)
+)
+
 
 flashggSigmaMoMpToMTag = cms.EDProducer("FlashggSigmaMpTTagPreCleanerProducer",
                                         #                                 DiPhotonTag=cms.InputTag('flashggDiPhotons'),

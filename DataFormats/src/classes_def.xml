@@ -56,6 +56,12 @@
 </class>
 <class name="std::vector<flashgg::UntaggedTag>"/>
 <class name="edm::Wrapper<std::vector<flashgg::UntaggedTag> >"/>
+<class name="flashgg::BothEBUntaggedTag"/>
+<class name="std::vector<flashgg::BothEBUntaggedTag>"/>
+<class name="edm::Wrapper<std::vector<flashgg::BothEBUntaggedTag> >"/>
+<class name="flashgg::NotEBEBUntaggedTag"/>
+<class name="std::vector<flashgg::NotEBEBUntaggedTag>"/>
+<class name="edm::Wrapper<std::vector<flashgg::NotEBEBUntaggedTag> >"/>
 <class name="flashgg::NoTag"/>
 <class name="std::vector<flashgg::NoTag>"/>
 <class name="edm::Wrapper<std::vector<flashgg::NoTag> >"/>

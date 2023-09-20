@@ -9,6 +9,8 @@
 #include "flashgg/DataFormats/interface/DiPhotonMVAResult.h"
 #include "flashgg/DataFormats/interface/NoTag.h"
 #include "flashgg/DataFormats/interface/UntaggedTag.h"
+#include "flashgg/DataFormats/interface/BothEBUntaggedTag.h" //JTao
+#include "flashgg/DataFormats/interface/NotEBEBUntaggedTag.h" //JTao
 #include "flashgg/DataFormats/interface/SigmaMpTTag.h"
 #include "flashgg/DataFormats/interface/Electron.h"
 #include "flashgg/DataFormats/interface/Muon.h"
@@ -216,6 +218,14 @@ namespace  {
         flashgg::UntaggedTag untaggedcat;
         std::vector<flashgg::UntaggedTag> vec_untaggedcat;
         edm::Wrapper<std::vector<flashgg::UntaggedTag> > wrp_vec_untaggedcat;
+
+        //JTao
+        flashgg::BothEBUntaggedTag bothebuntaggedcat;
+        std::vector<flashgg::BothEBUntaggedTag> vec_bothebuntaggedcat;
+        edm::Wrapper<std::vector<flashgg::BothEBUntaggedTag> > wrp_vec_bothebuntaggedcat;
+        flashgg::NotEBEBUntaggedTag notebebuntaggedcat;
+        std::vector<flashgg::NotEBEBUntaggedTag> vec_notebebuntaggedcat;
+        edm::Wrapper<std::vector<flashgg::NotEBEBUntaggedTag> > wrp_vec_notebebuntaggedcat;        
 
         flashgg::SigmaMpTTag sigmamptcat;
         std::vector<flashgg::SigmaMpTTag> vec_sigmamptcat;

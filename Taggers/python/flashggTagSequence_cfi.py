@@ -41,9 +41,13 @@ def flashggPrepareTagSequence(process, options):
                                       * flashggVHhadMVA
                                       * flashggGluGluHMVA
                                       * flashggVBFDiPhoDiJetMVA
-                                      * ( flashggUntagged
+#                                      * ( flashggUntagged
+                                      * ( flashggBothEBUntagged
+                                          + flashggNotEBEBUntagged        
                                       #                                  *( flashggSigmaMoMpToMTag
-                                          + flashggVBFTag
+#                                          + flashggVBFTag
+#                                          + flashggBothEBVBFTag
+#                                          + flashggNotEBEBVBFTag
                                           + flashggTTHDiLeptonTag
                                           + flashggTTHLeptonicTag
                       + flashggTHQLeptonicTag
