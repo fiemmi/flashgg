@@ -1,0 +1,13 @@
+{
+    "processes" : {
+
+        "Data" : [
+            "/EGamma/phys_higgs-Era2018_legacy_v1_Summer20UL-legacyRunII-v0-Run2018A-UL2018_MiniAODv2-v1-c777dc38be1a66893d88ae1b64c38638/USER",
+            "/EGamma/phys_higgs-Era2018_legacy_v1_Summer20UL-legacyRunII-v0-Run2018B-UL2018_MiniAODv2-v1-c777dc38be1a66893d88ae1b64c38638/USER",
+            "/EGamma/phys_higgs-Era2018_legacy_v1_Summer20UL-legacyRunII-v0-Run2018C-UL2018_MiniAODv2-v1-c777dc38be1a66893d88ae1b64c38638/USER",
+            "/EGamma/phys_higgs-Era2018_legacy_v1_Summer20UL-legacyRunII-v0-Run2018D-UL2018_MiniAODv2-v2-c777dc38be1a66893d88ae1b64c38638/USER"
+        ]
+
+    },
+    "cmdLine"  : "campaign=Era2018_legacy_v1_Summer20UL_Ram metaConditions=$CMSSW_BASE/src/flashgg/MetaData/data/MetaConditions/Era2018_legacy_v1.json useAAA=True lumiMask=/afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification/Collisions18/13TeV/Legacy_2018/Cert_314472-325175_13TeV_Legacy2018_Collisions18_JSON.txt"
+}
