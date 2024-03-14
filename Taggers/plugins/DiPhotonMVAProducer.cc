@@ -152,7 +152,7 @@ namespace flashgg {
             DiphotonMva_->AddVariable( "subleadeta", &subleadeta_ );
             DiphotonMva_->AddVariable( "CosPhi", &CosPhi_ );
             DiphotonMva_->AddVariable( "vtxprob", &vtxprob_ );
-            DiphotonMva_->AddVariable( "sigmarv", &sigmarv_ ); //sigmarv removed to avoid wiggle
+            //DiphotonMva_->AddVariable( "sigmarv", &sigmarv_ ); //sigmarv removed to avoid wiggle
             DiphotonMva_->AddVariable( "sigmawv", &sigmawv_ );
             DiphotonMva_->BookMVA( "BDT", diphotonMVAweightfile_.fullPath() );
         }

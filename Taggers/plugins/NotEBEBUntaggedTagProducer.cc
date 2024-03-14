@@ -82,6 +82,7 @@ namespace flashgg {
             float LeadSCeta = dipho->leadingPhoton()->superCluster()->eta();
             float SubleadSCeta = dipho->subLeadingPhoton()->superCluster()->eta();
             if( fabs(LeadSCeta)<1.4442 && fabs(SubleadSCeta)< 1.4442 ) continue;
+            if( fabs(LeadSCeta)>2.100 || fabs(SubleadSCeta)> 2.100 ) continue; //do not accept photons in a region where the FNUF correction + uncertainty will be very big
             NotEBEBUntaggedTag tag_obj( dipho, mvares );
             tag_obj.setDiPhotonIndex( candIndex );
 
