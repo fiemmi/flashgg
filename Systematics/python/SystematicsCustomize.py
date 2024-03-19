@@ -242,7 +242,7 @@ def customizeSystematicsForData(process):
 def customizeVPSetForData(systs, phScaleBins):
     newvpset = cms.VPSet()
     for pset in systs:
-        if (pset.Label.value().count("Scale") or pset.Label.value().count("SigmaEOverESmearing")) and not pset.Label.value().count("Gain"):
+        if (pset.Label.value().count("Scale") or pset.Label.value().count("SigmaEOverESmearing") or pset.Label.value().count("FNUF")) and not pset.Label.value().count("Gain"): #FIemmi: now FNUF has become a scale correction; add it to list of modules for which ApplyCentralValue becomes true
             pset.ApplyCentralValue = cms.bool(True) # Turn on central shift for data (it is off for MC)
             if type(pset.NSigmas) == type(cms.vint32()):
                 pset.NSigmas = cms.vint32() # Do not perform shift

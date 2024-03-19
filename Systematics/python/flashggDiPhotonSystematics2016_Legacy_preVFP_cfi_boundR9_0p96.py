@@ -463,7 +463,7 @@ MaterialForward = cms.PSet( PhotonMethodName = cms.string("FlashggPhotonScale"),
           ApplyCentralValue = cms.bool(False),
           Debug = cms.untracked.bool(False)
           )
-
+"""
 FNUFEB = cms.PSet( PhotonMethodName = cms.string("FlashggPhotonScale"),
           MethodName = cms.string("FlashggDiPhotonFromPhoton"),
           Label = cms.string("FNUFEB"),
@@ -473,7 +473,23 @@ FNUFEB = cms.PSet( PhotonMethodName = cms.string("FlashggPhotonScale"),
           ApplyCentralValue = cms.bool(False),
           Debug = cms.untracked.bool(False)
           )
+"""
 
+FNUFEB = cms.PSet( PhotonMethodName = cms.string("FlashggPhotonFNUFScaleEGMTool"),
+         MethodName = cms.string("FlashggDiPhotonFromPhoton"),
+         Label = cms.string("FNUFEB"),
+         NSigmas = cms.vint32(-1,1),
+         OverallRange = cms.string("abs(superCluster.eta)<1.5"),
+         ModelFile = cms.FileInPath("flashgg/Systematics/test_data/231024_HggMass_distributions.root"),
+         LaserResponseFile = cms.FileInPath("flashgg/Systematics/test_data/average_RoverR0_2016_preVFP.root"),
+         R9threshold = cms.double(0.96),
+         MuNatural_corr = cms.double(1.0007),
+         FractionalUncertainty = cms.double(0.30),
+         ApplyCentralValue = cms.bool(False),
+         UncertaintyBitMask = cms.string("011"),#cms.string("110"), actually unused by this module
+         Debug = cms.untracked.bool(False)
+         )
+"""
 FNUFEE = cms.PSet( PhotonMethodName = cms.string("FlashggPhotonScale"),
           MethodName = cms.string("FlashggDiPhotonFromPhoton"),
           Label = cms.string("FNUFEE"),
@@ -483,6 +499,22 @@ FNUFEE = cms.PSet( PhotonMethodName = cms.string("FlashggPhotonScale"),
           ApplyCentralValue = cms.bool(False),
           Debug = cms.untracked.bool(False)
           )
+"""
+
+FNUFEE = cms.PSet( PhotonMethodName = cms.string("FlashggPhotonFNUFScaleEGMTool"),
+         MethodName = cms.string("FlashggDiPhotonFromPhoton"),
+         Label = cms.string("FNUFEE"),
+         NSigmas = cms.vint32(-1,1),
+         OverallRange = cms.string("abs(superCluster.eta)>=1.5"),
+         ModelFile = cms.FileInPath("flashgg/Systematics/test_data/231024_HggMass_distributions.root"),
+         LaserResponseFile = cms.FileInPath("flashgg/Systematics/test_data/average_RoverR0_2016_preVFP.root"),
+         R9threshold = cms.double(0.96),
+         MuNatural_corr = cms.double(1.0007),
+         FractionalUncertainty = cms.double(0.30),
+         ApplyCentralValue = cms.bool(False),
+         UncertaintyBitMask = cms.string("011"),#cms.string("110"), actually unused by this module
+         Debug = cms.untracked.bool(False)
+         )
 
 ShowerShapeHighR9EB = cms.PSet( PhotonMethodName = cms.string("FlashggPhotonScale"),
           MethodName = cms.string("FlashggDiPhotonFromPhoton"),
