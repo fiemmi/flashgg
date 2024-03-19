@@ -25,8 +25,6 @@ namespace flashgg {
         void applyCorrection( flashgg::Photon &y, int syst_shift ) override;
         std::string shiftLabel( int ) const override;
         void eventInitialize( const edm::Event &iEvent, const edm::EventSetup & iSetup ) override;
-        //FNUFScaleCorrection FNUFscaler;
-        //FNUFScaleCorrection FNUFscaler(std::string RR0maps_name, std::string models_name);
     private:
         selector_type overall_range_;
         edm::FileInPath modelFile_;
@@ -50,12 +48,8 @@ namespace flashgg {
         fractional_unc_( conf.getParameter<double>( "FractionalUncertainty" )),
         uncBitMask_( conf.getParameter<std::string>("UncertaintyBitMask" ) ), //FIemmi: not needed
         debug_( conf.getUntrackedParameter<bool>( "Debug", false ) ),
-        //FNUFscaler("/afs/cern.ch/work/f/fiemmi/private/Hgg/MassMeasurement/CMSSW_10_6_29/src/flashgg/Systematics/test_data/average_RoverR0_2016_preVFP.root", "/afs/cern.ch/work/f/fiemmi/private/Hgg/MassMeasurement/CMSSW_10_6_29/src/flashgg/Systematics/test_data/231024_HggMass_distributions.root")
         FNUFscaler(laserResponseFile_.fullPath().c_str(), modelFile_.fullPath().c_str())
     {
-  
-        //Create a FNUF scaler object
-        //FNUFscaler("/afs/cern.ch/work/f/fiemmi/private/Hgg/MassMeasurement/CMSSW_10_6_29/src/flashgg/Systematics/test_data/average_RoverR0_2016_preVFP.root", "/afs/cern.ch/work/f/fiemmi/private/Hgg/MassMeasurement/CMSSW_10_6_29/src/flashgg/Systematics/test_data/231024_HggMass_distributions.root");
         
     }
 

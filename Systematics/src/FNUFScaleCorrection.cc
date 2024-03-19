@@ -33,7 +33,7 @@ FNUFScaleCorrection::FNUFScaleCorrection(std::string RR0maps_name, std::string m
   }
 
   TString SP_path = "Shower_Profiles_0X0/";
-  TString SP_preshower_path = "Shower_Profiles_3X0/"; //having 3 radiation lengths in front of ECAL
+  TString SP_preshower_path = "Shower_Profiles_3X0/"; //having 3 radiation lenghts in front of ECAL
 
   int id = 5; //FIemmi: undamaged crystal
   for(int i=0; i<23; i++){
@@ -41,7 +41,7 @@ FNUFScaleCorrection::FNUFScaleCorrection(std::string RR0maps_name, std::string m
     LCE0_EE_[i] = 0;
   }
 
-  //load LCE models
+  //load undamaged LCE models
   TH1D *hEB = (TH1D*)models_file_->Get(Form("LCE_NonDamaged_smooth/h_LCE_at_zero_EB_%d_smooth",id));
   for(int ib=1; ib<=hEB->GetNbinsX(); ib++){
     LCE0_EB_[ib-1] = hEB->GetBinContent(ib);
@@ -93,10 +93,10 @@ FNUFScaleCorrection::FNUFScaleCorrection(std::string RR0maps_name, std::string m
     }
   }
 
-  //Build two-dimensional graphs to be interpolated in order to get FNUF correction
+  //Dump values of double ratio into TGraph2D to interpolate the values for whatever particle energy and equivalent lumi
   this->DRatio();
   this->DRatio_preshower();      
-  //Dump values of double ratio into TGraph2D to interpolate the values for whatever particle energy and equivalent lumi
+  
   for(int ir=0; ir<nRings_; ir++){
     F_g_[ir] = new TGraph2D();
     F_g_[ir]->SetNpx(500);
