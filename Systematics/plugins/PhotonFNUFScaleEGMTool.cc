@@ -85,7 +85,7 @@ namespace flashgg {
             float scale = shift_val + syst_shift * shift_err;
             if( debug_ ) {
                 std::cout << "TESTING FNUF CORRECTION " << shiftLabel( syst_shift ) << std::endl;
-                std::cout << FNUFscaler.scaleCorr(run_number_, y.superCluster()->eta(), y.full5x5_r9(), y.energy(), r9threshold_, muNatural_corr_, debug_) << std::endl;
+                FNUFscaler.scaleCorr(run_number_, y.superCluster()->eta(), y.full5x5_r9(), y.energy(), r9threshold_, muNatural_corr_, debug_);
             }
             y.updateEnergy( shiftLabel( syst_shift ), scale * y.energy() );
         }

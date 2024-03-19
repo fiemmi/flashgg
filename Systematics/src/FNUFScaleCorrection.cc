@@ -144,11 +144,11 @@ double FNUFScaleCorrection::scaleCorr(double runNo, double eta, double R9, doubl
 	if (debug) std::cout << Form("Lsim = %f", Lsim) << std::endl;
 	if(iring < 15  || iring > 25) corr = F_g_[iring]->Interpolate(energy, Lsim);
 	else corr = F_preshower_g_[iring]->Interpolate(energy, Lsim);
-	if (debug) std::cout << Form("corr = %f", corr) << std::endl;
+	if (debug) std::cout << Form("1./corr = %f", 1./corr) << std::endl;
       }
     }
   }
-  return corr;
+  return 1./corr;
 }
 
 double FNUFScaleCorrection::scaleCorrUncert(double corr, double percent) {
