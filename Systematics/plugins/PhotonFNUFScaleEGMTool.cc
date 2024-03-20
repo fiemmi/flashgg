@@ -35,6 +35,7 @@ namespace flashgg {
         std::bitset<EnergyScaleCorrection::kErrNrBits> uncBitMask_; //FIemmi: inherited but not actually used
         bool debug_;
         unsigned run_number_;
+        bool isData_;
         FNUFScaleCorrection FNUFscaler;
     };
 
@@ -55,6 +56,7 @@ namespace flashgg {
 
     void PhotonFNUFScaleEGMTool::eventInitialize( const edm::Event &iEvent, const edm::EventSetup & iSetup ) {
         run_number_ = iEvent.run();
+        isData_ = iEvent.isRealData();
     }
     
     std::string PhotonFNUFScaleEGMTool::shiftLabel( int syst_value ) const
@@ -73,13 +75,13 @@ namespace flashgg {
     void PhotonFNUFScaleEGMTool::applyCorrection( flashgg::Photon &y, int syst_shift )
     {
         if( overall_range_( y ) ) {
-            auto shift_val = FNUFscaler.scaleCorr(run_number_, y.superCluster()->eta(), y.full5x5_r9(), y.energy(), r9threshold_, muNatural_corr_, false);
+            auto shift_val = FNUFscaler.scaleCorr(isData_, run_number_, y.superCluster()->eta(), y.full5x5_r9(), y.energy(), r9threshold_, muNatural_corr_, false);
             auto shift_err = FNUFscaler.scaleCorrUncert(shift_val, fractional_unc_);
             if (!applyCentralValue()) shift_val = 1.;
             float scale = shift_val + syst_shift * shift_err;
             if( debug_ ) {
                 std::cout << "TESTING FNUF CORRECTION " << shiftLabel( syst_shift ) << std::endl;
-                FNUFscaler.scaleCorr(run_number_, y.superCluster()->eta(), y.full5x5_r9(), y.energy(), r9threshold_, muNatural_corr_, debug_);
+                FNUFscaler.scaleCorr(isData_, run_number_, y.superCluster()->eta(), y.full5x5_r9(), y.energy(), r9threshold_, muNatural_corr_, debug_);
             }
             y.updateEnergy( shiftLabel( syst_shift ), scale * y.energy() );
         }

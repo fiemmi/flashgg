@@ -17,7 +17,7 @@ class FNUFScaleCorrection {
   double F(int i, int j, int k) { return F_[i][j][k]; };
   double F_preshower(int i, int j, int k) { return F_preshower_[i][j][k]; };
   int getRing(double eta);
-  double scaleCorr(double runNo, double eta, double R9, double energy, double R9thresh, double munat_corr, bool debug);
+  double scaleCorr(bool isData, double runNo, double eta, double R9, double energy, double R9thresh, double munat_corr, bool debug);
   double scaleCorrUncert(double corr, double percent);
   
  private:
@@ -34,6 +34,7 @@ class FNUFScaleCorrection {
   double gProfile_preshower_[nEne_][23]; //23: number of bins in crystal depth
   double eProfile_preshower_[nEne_][23];
   TGraph * RR0_vs_run_[nRings_];
+  double avgRR0[nRings_]; //average (on a per-year basis) R/R0 in a given ring. Used in MC to get uncertainty
   TGraph * grLvsR_[nRings_];
   double F_[nEne_][nLumi_][nRings_];
   double F_preshower_[nEne_][nLumi_][nRings_]; 
