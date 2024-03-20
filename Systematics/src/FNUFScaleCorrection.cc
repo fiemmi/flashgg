@@ -122,39 +122,27 @@ FNUFScaleCorrection::FNUFScaleCorrection(std::string RR0maps_name, std::string m
 FNUFScaleCorrection::~FNUFScaleCorrection(){}
 
 double FNUFScaleCorrection::scaleCorr(bool isData, double runNo, double eta, double R9, double energy, double R9thresh, double munat_corr, bool debug) {
-  if (debug) std::cout << "++++ Printing parameters of scaleCorr method ++++" << std::endl;
-  if (debug) std::cout << Form("Inputs: runNo = %f; eta = %f; R9 = %f; energy = %f", runNo, eta, R9, energy) << std::endl;
+  if (debug) {
+    std::string what;
+    if (isData) what = "data";
+    else what = "MC";
+    std::cout << Form("Running FNUFScaleCorrection::scaleCorr for %s", what.c_str()) << std::endl;
+    std::cout << "++++ Printing parameters of scaleCorr method ++++" << std::endl;
+    std::cout << Form("Inputs: runNo = %f; eta = %f; R9 = %f; energy = %f", runNo, eta, R9, energy) << std::endl;
+  }
   double corr = 1.; //default value
   if (R9 <= R9thresh) corr = munat_corr; //low R9: constant correction
   else { //high R9: do machinery
-    if (isData) { //for data, compute correction based on R/R0 measured in each run
-      if (debug) std::cout << "Running FNUFScaleCorrection::scaleCorr for data" << std::endl;
-      int iring = getRing(eta);
-      if (debug) std::cout << Form("iring = %d", iring) << std::endl;
-      double runmin = TMath::MinElement(RR0_vs_run_[iring]->GetN(), RR0_vs_run_[iring]->GetX()); 
-      double runmax = TMath::MaxElement(RR0_vs_run_[iring]->GetN(), RR0_vs_run_[iring]->GetX());
-      if (debug) std::cout << Form("runmin = %f; runmax = %f", runmin, runmax) << std::endl;
-      if (runNo >= runmin && runNo <= runmax) {
-	if (debug) std::cout << "Passed the run-number protection" << std::endl;
-	double RR0 = RR0_vs_run_[iring]->Eval(runNo);
-	if (debug) std::cout << Form("R/R0 = %f", RR0) << std::endl;
-	double RR0min = TMath::MinElement(grLvsR_[iring]->GetN(), grLvsR_[iring]->GetX());
-	double RR0max = TMath::MaxElement(grLvsR_[iring]->GetN(), grLvsR_[iring]->GetX());
-	if (debug) std::cout << Form("RR0min = %f; RR0max = %f", RR0min, RR0max) << std::endl;
-	if (RR0 >= RR0min && RR0 <= RR0max) {
-	  if (debug) std::cout << "Passed the R/R0 protection" << std::endl;
-	  double Lsim = GetLsim(iring, RR0);
-	  if (debug) std::cout << Form("Lsim = %f", Lsim) << std::endl;
-	  if(iring < 15  || iring > 25) corr = F_g_[iring]->Interpolate(energy, Lsim);
-	  else corr = F_preshower_g_[iring]->Interpolate(energy, Lsim);
-	  if (debug) std::cout << Form("1./corr = %f", 1./corr) << std::endl;
-	}
-      }
-    }//end isData
-    else { //for MC, runNo is just a placeholder (runNo==1 always). Thus, correct using average R/R0. Correction not effectively applied to MC, only needed to get uncertainty as a fraction of correction
-      if (debug) std::cout << "Running FNUFScaleCorrection::scaleCorr for MC" << std::endl;
-      int iring = getRing(eta);
-      double RR0 = avgRR0[iring]; //use the average R/R0
+    int iring = getRing(eta);
+    if (debug) std::cout << Form("iring = %d", iring) << std::endl;
+    double runmin = TMath::MinElement(RR0_vs_run_[iring]->GetN(), RR0_vs_run_[iring]->GetX()); 
+    double runmax = TMath::MaxElement(RR0_vs_run_[iring]->GetN(), RR0_vs_run_[iring]->GetX());
+    if (debug) std::cout << Form("runmin = %f; runmax = %f", runmin, runmax) << std::endl;
+    if (runNo >= runmin && runNo <= runmax) {
+      if (debug) std::cout << "Passed the run-number protection" << std::endl;
+      double RR0;
+      if (isData) RR0 = RR0_vs_run_[iring]->Eval(runNo); //data: use actual runNo
+      else RR0 = avgRR0[iring]; //MC: use average R/R0
       if (debug) std::cout << Form("R/R0 = %f", RR0) << std::endl;
       double RR0min = TMath::MinElement(grLvsR_[iring]->GetN(), grLvsR_[iring]->GetX());
       double RR0max = TMath::MaxElement(grLvsR_[iring]->GetN(), grLvsR_[iring]->GetX());
@@ -167,7 +155,7 @@ double FNUFScaleCorrection::scaleCorr(bool isData, double runNo, double eta, dou
 	else corr = F_preshower_g_[iring]->Interpolate(energy, Lsim);
 	if (debug) std::cout << Form("1./corr = %f", 1./corr) << std::endl;
       }
-    }//end isMC
+    }
   }// end high R9
   return 1./corr;
 }
