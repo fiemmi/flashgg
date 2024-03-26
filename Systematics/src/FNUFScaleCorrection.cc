@@ -130,8 +130,8 @@ double FNUFScaleCorrection::scaleCorr(bool isData, double runNo, double eta, dou
     std::cout << "++++ Printing parameters of scaleCorr method ++++" << std::endl;
     std::cout << Form("Inputs: runNo = %f; eta = %f; R9 = %f; energy = %f", runNo, eta, R9, energy) << std::endl;
   }
-  double corr = 1.; //default value
-  if (R9 <= R9thresh) corr = munat_corr; //low R9: constant correction
+  double F = 1.; //default value for double ratio of energy responses
+  if (R9 <= R9thresh) F = munat_corr; //low R9: constant correction
   else { //high R9: do machinery
     int iring = getRing(eta);
     if (debug) std::cout << Form("iring = %d", iring) << std::endl;
@@ -154,20 +154,20 @@ double FNUFScaleCorrection::scaleCorr(bool isData, double runNo, double eta, dou
 	if (debug) std::cout << "Passed the R/R0 protection" << std::endl;
 	double Lsim = GetLsim(iring, RR0);
 	if (debug) std::cout << Form("Lsim = %f", Lsim) << std::endl;
-	if(iring < 15  || iring > 25) corr = F_g_[iring]->Interpolate(energy, Lsim);
-	else corr = F_preshower_g_[iring]->Interpolate(energy, Lsim);
-	if (debug) std::cout << Form("1./corr = %f", 1./corr) << std::endl;
+	if(iring < 15  || iring > 25) F = F_g_[iring]->Interpolate(energy, Lsim);
+	else F = F_preshower_g_[iring]->Interpolate(energy, Lsim);
       }
     }
   }// end high R9
-  if (debug) std::cout << Form("Returned by scaleCorrUncert: %f" ,(1./corr + 0.3*(1. - 1./corr))) << std::endl;
-  return 1./corr;
+  if (debug) std::cout << Form("1./F = %f", 1./F) << std::endl;
+  return 1./F;
 }
 
-double FNUFScaleCorrection::scaleCorrUncert(double corr, double percent) {
+double FNUFScaleCorrection::scaleCorrUncert(double corr, double percent, bool debug) {
 
   //return corr * percent;
-  return 1./corr + percent*(1. - 1./corr);
+  if (debug) std::cout << Form("Returned by scaleCorrUncert: %f", (percent*(1. - corr))) << std::endl;
+  return percent*(1. - corr);
   
 }
 

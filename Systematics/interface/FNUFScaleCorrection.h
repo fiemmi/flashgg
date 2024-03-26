@@ -18,7 +18,7 @@ class FNUFScaleCorrection {
   double F_preshower(int i, int j, int k) { return F_preshower_[i][j][k]; };
   int getRing(double eta);
   double scaleCorr(bool isData, double runNo, double eta, double R9, double energy, double R9thresh, double munat_corr, bool debug);
-  double scaleCorrUncert(double corr, double percent);
+  double scaleCorrUncert(double corr, double percent, bool debug);
   
  private:
   static const int nEne_ = 13;
