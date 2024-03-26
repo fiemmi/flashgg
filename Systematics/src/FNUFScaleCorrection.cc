@@ -138,7 +138,10 @@ double FNUFScaleCorrection::scaleCorr(bool isData, double runNo, double eta, dou
     double runmin = TMath::MinElement(RR0_vs_run_[iring]->GetN(), RR0_vs_run_[iring]->GetX()); 
     double runmax = TMath::MaxElement(RR0_vs_run_[iring]->GetN(), RR0_vs_run_[iring]->GetX());
     if (debug) std::cout << Form("runmin = %f; runmax = %f", runmin, runmax) << std::endl;
-    if (runNo >= runmin && runNo <= runmax) {
+    double runNo_; // used to check for run number protection. Actual run number if it's data, toy value for MC
+    if (isData) runNo_ = runNo;
+    else runNo_ = (runmin + runmax)/2.; //for MC, just take the middle point of runmin and runmax as a toy value to have the event pass the run number protection 
+    if (runNo_ >= runmin && runNo_ <= runmax) {
       if (debug) std::cout << "Passed the run-number protection" << std::endl;
       double RR0;
       if (isData) RR0 = RR0_vs_run_[iring]->Eval(runNo); //data: use actual runNo
@@ -157,12 +160,14 @@ double FNUFScaleCorrection::scaleCorr(bool isData, double runNo, double eta, dou
       }
     }
   }// end high R9
+  if (debug) std::cout << Form("Returned by scaleCorrUncert: %f" ,(1./corr + 0.3*(1. - 1./corr))) << std::endl;
   return 1./corr;
 }
 
 double FNUFScaleCorrection::scaleCorrUncert(double corr, double percent) {
 
-  return corr * percent;
+  //return corr * percent;
+  return 1./corr + percent*(1. - 1./corr);
   
 }
 
