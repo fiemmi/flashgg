@@ -83,6 +83,7 @@ namespace flashgg {
             if( debug_ ) {
                 std::cout << shiftLabel( syst_shift ) << std::endl;
                 std::cout << Form("Will shift the photon energy by a factor %f", scale) << std::endl;
+                std::cout << Form("Photon has pt = %f; et = %f", y.pt(), y.et()) << std::endl;
             }
         }
     }

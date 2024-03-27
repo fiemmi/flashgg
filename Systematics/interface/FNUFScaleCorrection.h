@@ -12,6 +12,7 @@ class FNUFScaleCorrection {
   double lumi(int i)    { return lumi_[i]; };
   int nR()              { return nRings_; };  
   double GetLsim(int, double);
+  double getClosest(double x, std::vector<double>);
   void DRatio();
   void DRatio_preshower();
   double F(int i, int j, int k) { return F_[i][j][k]; };
@@ -25,8 +26,10 @@ class FNUFScaleCorrection {
   static const int nLumi_ = 16;
   static const int nRings_ = 30;
   double lumi_[nLumi_] = { 1e-1, 2e-1, 5e-1, 1e+0, 2e+0, 5e+0, 1e+1, 2e+1, 5e+1, 10e+1, 15e+1, 20e+1, 25e+1, 30e+1, 40e+1, 50e+1 };
+  std::vector<double> lumi_v_{ 1e-1, 2e-1, 5e-1, 1e+0, 2e+0, 5e+0, 1e+1, 2e+1, 5e+1, 10e+1, 15e+1, 20e+1, 25e+1, 30e+1, 40e+1, 50e+1 };
   TString slumi_[nLumi_] = { "1e-1", "2e-1", "5e-1", "1e+0", "2e+0", "5e+0", "1e+1", "2e+1", "5e+1", "10e+1", "15e+1", "20e+1", "25e+1", "30e+1", "40e+1", "50e+1" };
   double energies_[nEne_] = { 10, 15, 20, 30, 50, 75, 100, 150, 200, 300, 500, 750, 1000 };
+  std::vector<double> energies_v_{ 10, 15, 20, 30, 50, 75, 100, 150, 200, 300, 500, 750, 1000 };
   TFile * RR0maps_file_;
   TFile * models_file_;
   double gProfile_[nEne_][23]; //23: number of bins in crystal depth

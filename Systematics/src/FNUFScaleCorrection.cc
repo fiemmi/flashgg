@@ -115,7 +115,6 @@ FNUFScaleCorrection::FNUFScaleCorrection(std::string RR0maps_name, std::string m
       }
     }
   }
-  
 }//end constructor
 
 
@@ -154,13 +153,29 @@ double FNUFScaleCorrection::scaleCorr(bool isData, double runNo, double eta, dou
 	if (debug) std::cout << "Passed the R/R0 protection" << std::endl;
 	double Lsim = GetLsim(iring, RR0);
 	if (debug) std::cout << Form("Lsim = %f", Lsim) << std::endl;
-	if(iring < 15  || iring > 25) F = F_g_[iring]->Interpolate(energy, Lsim);
-	else F = F_preshower_g_[iring]->Interpolate(energy, Lsim);
-      }
-    }
-  }// end high R9
+	double emin = *std::min_element(std::begin(energies_), std::end(energies_));
+	double emax = *std::max_element(std::begin(energies_), std::end(energies_));
+	double lsimmin = *std::min_element(std::begin(lumi_), std::end(lumi_));
+	double lsimmax = *std::max_element(std::begin(lumi_), std::end(lumi_));
+	if (debug) std::cout << Form("emin = %f; emax = %f; lsimmin = %f, lsimmax = %f", emin, emax, lsimmin, lsimmax) << std::endl;
+	if (energy >= emin && energy <= emax && Lsim >= lsimmin && Lsim <= lsimmax) {
+	  if (debug) std::cout << "Passed the energy and Lsim protections" << std::endl;
+	  if(iring < 15  || iring > 25) F = F_g_[iring]->Interpolate(energy, Lsim);
+	  else F = F_preshower_g_[iring]->Interpolate(energy, Lsim);
+	} // end energy and Lsim protection
+	else { // if failing energy and Lsim protection, use closest value in energy and Lsim
+	  if(iring < 15  || iring > 25) F = F_g_[iring]->Interpolate(getClosest(energy,energies_v_), getClosest(Lsim, lumi_v_));
+	  else F = F_preshower_g_[iring]->Interpolate(getClosest(energy,energies_v_), getClosest(Lsim, lumi_v_));
+	}
+      }// end RR0 protection 
+    } // end run number protection
+  }// end highR9
   if (debug) std::cout << Form("1./F = %f", 1./F) << std::endl;
-  return 1./F;
+  if (F==0.) {// protect against any residual misbehaviours
+    std::cout << "+++ WARNING +++" << std::endl << "Double ratio is 0. Returning 1." << std::endl;
+    return 1.;
+  }
+  else return 1./F;
 }
 
 double FNUFScaleCorrection::scaleCorrUncert(double corr, double percent, bool debug) {
@@ -243,3 +258,10 @@ int FNUFScaleCorrection::getRing (double eta) {
     return iRing;      
 }
 
+double FNUFScaleCorrection::getClosest(double x, std::vector<double> v) {
+  
+  auto low = std::lower_bound(v.begin(), v.end() - 1, x); //get pointer to first element greater or equal to x
+  if ((low - v.begin()) == 0) return v.at(0); // if x is below the lowest element in v
+  else if ( abs(x - v.at(low - v.begin()) ) > abs(x - v.at(low - v.begin() - 1)) ) return v.at(low - v.begin() - 1);
+  else return v.at(low - v.begin());
+}
